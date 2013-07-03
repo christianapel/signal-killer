@@ -26,12 +26,24 @@
     <url>http://github.com/jenkinsci/signal-killer</url>
   </scm>
   
-  
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>http://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>http://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
   <distributionManagement>
     <repository>
       <id>java.net-m2-repository</id>
-      <url>http://maven.jenkins-ci.org:8081/content/repositories/releases/
-      </url>
+      <url>http://maven.jenkins-ci.org/content/repositories/releases/</url>
     </repository>
   </distributionManagement>
 
