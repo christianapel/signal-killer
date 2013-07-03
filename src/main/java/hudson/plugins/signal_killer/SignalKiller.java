@@ -21,7 +21,7 @@ public class SignalKiller extends ProcessKiller{
 	 * Does nothing, just logs that plugin instance was created on Hudson master.
 	 */
 	public SignalKiller(){
-		LOGGER.fine("SignalKiller initializted");
+		LOGGER.fine("SignalKiller initialized");
 	}
 	
 	@Override
