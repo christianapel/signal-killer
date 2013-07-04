@@ -1,11 +1,11 @@
 package hudson.plugins.signal_killer;
 
-import static hudson.util.jna.GNUCLibrary.LIBC;
 import hudson.Extension;
 import hudson.util.ProcessKiller;
 import hudson.util.ProcessTree;
 
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Extension
@@ -42,7 +42,13 @@ public class SignalKiller extends ProcessKiller{
 	 */
 	private int sendSignal(int pid, int signal){
 		LOGGER.fine("Sending signal " + signal + " to process " + pid);
-		return LIBC.kill(pid,signal);
+        int returnValue = -1;
+        try {
+          returnValue = hudson.util.jna.GNUCLibrary.LIBC.kill(pid, SIGKILL);
+        } catch (LinkageError er) {
+          LOGGER.log(Level.SEVERE, "Couldn't find native library!", er);
+        }
+        return returnValue;
 	}
 	
 	private static final Logger LOGGER = Logger.getLogger(SignalKiller.class.getName());
